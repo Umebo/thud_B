@@ -1,7 +1,4 @@
-package org.umeboshi.thud.game.gameplay;
-
-import org.umeboshi.thud.game.board.Board;
-import org.umeboshi.thud.game.player.Player;
+package org.umeboshi.thud.game.entities;
 
 import java.util.UUID;
 
@@ -20,14 +17,14 @@ public class GameSession {
     private final UUID gameId;
     private final Player firstPlayer;
     private Player secondPlayer;
-    private final Board board;
+    private Board board;
     private Round round;
     private GameStatus gameStatus;
 
-    public GameSession(Player firstPlayer) {
+    public GameSession(Player firstPlayer, Board board) {
         this.gameId = UUID.randomUUID();
         this.firstPlayer = firstPlayer;
-        this.board = new Board();
+        this.board = board;
         this.round = Round.FIRST;
         this.gameStatus = GameStatus.NEW;
     }
@@ -50,6 +47,10 @@ public class GameSession {
 
     public Board getBoard() {
         return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
     }
 
     public Round getRound() {

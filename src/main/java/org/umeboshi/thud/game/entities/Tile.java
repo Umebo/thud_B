@@ -1,4 +1,4 @@
-package org.umeboshi.thud.game.board;
+package org.umeboshi.thud.game.entities;
 
 import org.apache.commons.lang3.tuple.Pair;
 
