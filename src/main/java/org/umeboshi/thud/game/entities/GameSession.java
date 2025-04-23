@@ -1,7 +1,11 @@
 package org.umeboshi.thud.game.entities;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+
 import java.util.UUID;
 
+@RedisHash("GameSession")
 public class GameSession {
     public enum GameStatus {
         NEW,
@@ -14,6 +18,7 @@ public class GameSession {
         SECOND
     }
 
+    @Id
     private final UUID gameId;
     private final Player firstPlayer;
     private Player secondPlayer;
