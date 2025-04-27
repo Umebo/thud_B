@@ -1,8 +1,10 @@
 package org.umeboshi.thud.game.gameplay;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.umeboshi.thud.game.entities.GameSession;
@@ -18,7 +20,8 @@ public class GameplayController {
         this.gameplayService = gameplayService;
     }
 
-    @GetMapping("/new")
+    @PostMapping("/new")
+    @ResponseStatus(HttpStatus.CREATED)
     GameSession getNewGameSession(@RequestBody Player player) {
         return gameplayService.createNewGame(player);
     }

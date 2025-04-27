@@ -5,7 +5,7 @@ import org.springframework.data.redis.core.RedisHash;
 
 import java.util.UUID;
 
-@RedisHash("GameSession")
+@RedisHash
 public class GameSession {
     public enum GameStatus {
         NEW,

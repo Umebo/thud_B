@@ -4,12 +4,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import static org.umeboshi.thud.game.GameConstants.TILES_TO_COORDINATES;
 
-public class Board {
-    private final Tile[][] boardTiles;
-
-    public Board(Tile[][] boardTiles) {
-        this.boardTiles = boardTiles;
-    }
+public record Board(Tile[][] boardTiles) {
 
     public Tile getTile(String tileSignature) {
         Pair<Integer, Integer> tilePosition = TILES_TO_COORDINATES.get(tileSignature);
