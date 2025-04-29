@@ -1,4 +1,4 @@
-package org.umeboshi.thud.game.player;
+package org.umeboshi.thud.game.entities;
 
 public enum PlayerType {
     DWARF(1),

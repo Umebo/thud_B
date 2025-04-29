@@ -1,10 +1,11 @@
-package org.umeboshi.thud.game.gameplay;
+package org.umeboshi.thud.game.entities;
 
-import org.umeboshi.thud.game.board.Board;
-import org.umeboshi.thud.game.player.Player;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
 
 import java.util.UUID;
 
+@RedisHash
 public class GameSession {
     public enum GameStatus {
         NEW,
@@ -17,17 +18,18 @@ public class GameSession {
         SECOND
     }
 
+    @Id
     private final UUID gameId;
     private final Player firstPlayer;
     private Player secondPlayer;
-    private final Board board;
+    private Board board;
     private Round round;
     private GameStatus gameStatus;
 
-    public GameSession(Player firstPlayer) {
+    public GameSession(Player firstPlayer, Board board) {
         this.gameId = UUID.randomUUID();
         this.firstPlayer = firstPlayer;
-        this.board = new Board();
+        this.board = board;
         this.round = Round.FIRST;
         this.gameStatus = GameStatus.NEW;
     }
@@ -50,6 +52,10 @@ public class GameSession {
 
     public Board getBoard() {
         return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
     }
 
     public Round getRound() {

@@ -1,7 +1,7 @@
-package org.umeboshi.thud.game.player;
+package org.umeboshi.thud.game.entities;
 
 public class Player {
-    private String nickname;
+    private final String nickname;
     private PlayerType playerType;
 
     public Player(String nickname) {
@@ -10,10 +10,6 @@ public class Player {
 
     public String getNickname() {
         return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
     }
 
     public PlayerType getPlayerType() {
